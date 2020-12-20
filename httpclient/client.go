@@ -29,6 +29,8 @@ type Client struct {
 // New 新的client实例
 func New(URL string, method string) *Client {
 	client := &Client{}
+	client.url = URL
+	client.method = method
 	// 设置默认的超时时间
 	client.timeout = time.Second * 10
 	return client
