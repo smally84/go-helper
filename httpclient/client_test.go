@@ -3,11 +3,14 @@ package httpclient
 import (
 	"fmt"
 	"testing"
+	"time"
 )
 
 func TestClient(t *testing.T) {
-	client := New("https://www.piaoziyou.com", "GET")
-	res, err := client.Do()
+	res, err := New("https://www.baidu.com", "GET").
+		WithHeaders(map[string]string{}).
+		WithTimeout(time.Second * 10).
+		Do()
 	if err != nil {
 		fmt.Println(err)
 	} else {
