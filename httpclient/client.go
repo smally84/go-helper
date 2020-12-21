@@ -76,15 +76,15 @@ func (c *Client) WithQueryParams(queryParams map[string]string) *Client {
 	return c
 }
 
-// WithFormData 表单数据
-func (c *Client) WithFormData(data url.Values) {
+// WithFormBody 表单数据
+func (c *Client) WithFormBody(data url.Values) {
 	c.request.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	c.method = "POST"
 	c.body = bytes.NewBuffer([]byte(data.Encode()))
 }
 
-// WithFileData 文件上传数据
-func (c *Client) WithFileData(srcFile string, fileName string) *Client {
+// WithFileBody 文件上传数据
+func (c *Client) WithFileBody(srcFile string, fileName string) *Client {
 	// 文件上传只允许POST方法
 	c.method = "POST"
 	body := new(bytes.Buffer)
@@ -112,8 +112,8 @@ func (c *Client) WithFileData(srcFile string, fileName string) *Client {
 	return c
 }
 
-// WithRawData 发送的数据
-func (c *Client) WithRawData(data []byte) *Client {
+// WithRawBody 发送的数据
+func (c *Client) WithRawBody(data []byte) *Client {
 	c.body = bytes.NewBuffer(data)
 	return c
 }
