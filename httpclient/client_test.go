@@ -10,7 +10,7 @@ func TestClient(t *testing.T) {
 	res, err := New("https://www.baidu.com", "GET").
 		WithHeaders(map[string]string{}).
 		WithTimeout(time.Second * 10).
-		Do()
+		Request()
 	if err != nil {
 		fmt.Println(err)
 	} else {

@@ -118,8 +118,8 @@ func (c *Client) WithRawBody(data []byte) *Client {
 	return c
 }
 
-// Do 执行请求
-func (c *Client) Do() ([]byte, error) {
+// Request 执行请求
+func (c *Client) Request() ([]byte, error) {
 	c.request, _ = http.NewRequest(c.method, c.url, c.body)
 	if c.request == nil {
 		return nil, errors.New("request is nil,should be init first")
@@ -157,7 +157,7 @@ func (c *Client) Do() ([]byte, error) {
 // DownloadFile 下载文件
 // dstURL 文件的保存地址
 func (c *Client) DownloadFile(dstURL string) error {
-	resData, _ := c.Do()
+	resData, _ := c.Request()
 	// 创建目标文件的文件夹
 	dstDir := filepath.Dir(dstURL)
 	_, err := os.Stat(dstDir)
